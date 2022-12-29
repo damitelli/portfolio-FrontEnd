@@ -1,0 +1,29 @@
+<div class="card" id="profile" *ngFor="let info of profileInfo">
+
+    <img class="cover" [src]="info.url_portada" alt="Portada">
+
+    <div class="m-3">
+        <img class="profile-pic" [src]="info.url_foto" alt="Foto de perfil">
+
+        <div class="text-end">
+            <div class="btn-edit">
+                <app-btn-edit (btnClick)="openEditProfileModal(info)"></app-btn-edit>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body d-md-flex">
+        <div class="flex-shrink-0 mb-3">
+            <div class="card-title">
+                <h2>{{info.nombre}} {{info.apellido}}</h2>
+            </div>
+            <p class="card-text profession-text mt-3 mb-1">{{info.profesion}}</p>
+            <p class="location-text card-text mt-3 mb-1">{{info.localidad}}</p>
+        </div>
+
+        <div class="flex-grow-1 m-1 ms-md-5">
+            <p class="card-text">{{info.sobre_mi}}</p>
+        </div>
+    </div>
+
+</div>

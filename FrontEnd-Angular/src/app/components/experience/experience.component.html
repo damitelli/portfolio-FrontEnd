@@ -1,0 +1,48 @@
+<div class="card" id="exp">
+    <div class="card-body">
+        <div class="card-title">
+
+            <div class="section-title d-flex">
+                <div class="d-block mb-3">
+                    <h2>Experiencia Laboral</h2>
+                </div>
+            </div>
+
+            <div class="btn-edit">
+                <a class="btn-right">
+                    <app-btn-add (btnClick)="openAddExpModal()"></app-btn-add>
+                </a>
+            </div>
+        </div>
+
+        <div class="d-lg-flex my-5" *ngFor="let experience of experienceList.reverse()">
+            <div class="flex-shrink-0 text-center ms-md-3">
+                <img class="logo-institution mb-3" [src]="experience.url_logo_empresa" alt="Logo">
+            </div>
+
+            <div class="container-fluid ms-3">
+
+                <div class="d-flex">
+                    <h4 class="flex-grow-1">{{experience.puesto}}</h4>
+                    <div class="btn-edit flex-shrink-0 p-0">
+                        <a class=" btn-right p-1">
+                            <app-btn-edit (btnClick)="openEditExpModal(experience)">
+                            </app-btn-edit>
+                        </a>
+                        <a class="btn-right p-1">
+                            <app-btn-delete (btnClick)="openDeleteExpModal(experience)"></app-btn-delete>
+                        </a>
+                    </div>
+                </div>
+
+                <p class="card-text mt-3 mb-1">{{experience.descripcion}}</p>
+
+                <p class="date-text card-text mt-3 mb-1">
+                    {{experience.fecha_inicio}} - {{experience.fecha_fin}}
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</div>

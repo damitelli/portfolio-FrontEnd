@@ -1,0 +1,78 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title">Editar habilidad</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="editSkillForm" (ngSubmit)="updateSkillData(editSkillForm.value); activeModal.close()">
+
+            <div class="mb-3">
+                <label for="editSkillNombre" class="form-label">Habilidad</label>
+                <input type="text" class="form-control form-control-sm" id="editSkillNombre"
+                    placeholder="Ingrese el nombre de la habilidad." formControlName="nombre" required minlength="1"
+                    maxlength="50"
+                    [ngClass]="{'is-invalid':nombre?.errors && nombre?.touched, 'is-valid':!nombre?.errors && nombre?.touched}">
+                <div *ngIf="nombre?.errors && nombre?.touched">
+                    <p *ngIf="nombre?.hasError('required')" class="text-danger">
+                        El nombre de la habilidad es requerido (mínimo 1 caracter y máximo 50 caracteres).
+                    </p>
+                    <p *ngIf="nombre?.errors?.['minlength']" class="text-danger">
+                        El nombre de la habilidad debe ser de 1 o más caracteres.
+                    </p>
+                    <p *ngIf="nombre?.errors?.['maxlength']" class="text-danger">
+                        El nombre de la habilidad debe tener como máximo 50 caracteres.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="editSkillPorcentajeDeDominio" class="form-label">Porcentaje de dominio</label>
+                <input type="text" class="form-control form-control-sm" id="editSkillPorcentajeDeDominio"
+                    placeholder="Ingrese el porcentaje de dominio (Solo numeros)."
+                    formControlName="porcentaje_de_dominio" required minlength="1" maxlength="3" min="1" max="100"
+                    pattern="[0-9]+"
+                    [ngClass]="{'is-invalid':porcentaje_de_dominio?.errors && porcentaje_de_dominio?.touched, 'is-valid':!porcentaje_de_dominio?.errors && porcentaje_de_dominio?.touched}">
+                <div *ngIf="porcentaje_de_dominio?.errors && porcentaje_de_dominio?.touched">
+                    <p *ngIf="porcentaje_de_dominio?.hasError('required')" class="text-danger">
+                        El porcetaje de dominio es requerido (mínimo 1% y máximo 100%).
+                    </p>
+                    <p *ngIf="porcentaje_de_dominio?.errors?.['min']" class="text-danger">
+                        El porcetaje de dominio debe ser como mínimo de 1%.
+                    </p>
+                    <p *ngIf="porcentaje_de_dominio?.errors?.['max']" class="text-danger">
+                        El porcetaje de dominio debe ser como máximo de 100%.
+                    </p>
+                    <p *ngIf="porcentaje_de_dominio?.errors?.['pattern']" class="text-danger">
+                        El porcetaje de dominio solo acepta números entre 1 y 100.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="editSkillTipoDeHabilidadId" class="form-label">Tipo de habilidad</label>
+                <div class="d-grid">
+                    <select class="form-select form-select-sm" id="editSkillTipoDeHabilidadId"
+                        formControlName="tipo_de_habilidad_id" required (onChange)="($event)"
+                        [ngClass]="{'is-invalid':tipo_de_habilidad_id?.errors && tipo_de_habilidad_id?.touched, 'is-valid':!tipo_de_habilidad_id?.errors && tipo_de_habilidad_id?.touched}">
+                        <option value="">Seleccione el tipo de habilidad</option>
+                        <option *ngFor="let elemento of tipoDeHabilidad" [ngValue]="elemento.id">
+                            {{elemento.tipo}}
+                        </option>
+                    </select>
+                    <div *ngIf="tipo_de_habilidad_id?.errors && tipo_de_habilidad_id?.touched">
+                        <p *ngIf="tipo_de_habilidad_id?.hasError('required')" class="text-danger">
+                            El tipo de habilidad es requerido.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="activeModal.close()">Cerrar</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!editSkillForm.valid">Aplicar
+                    cambios</button>
+            </div>
+
+        </form>
+    </div>
+</div>

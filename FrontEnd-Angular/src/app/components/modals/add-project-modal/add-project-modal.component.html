@@ -1,0 +1,131 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title">Agregar proyecto</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="addProjectForm" (ngSubmit)="addProjectData(addProjectForm.value); activeModal.close()">
+
+            <div class="mb-3">
+                <label for="addProjectNombre" class="form-label">Nombre del proyecto</label>
+                <input type="text" class="form-control form-control-sm" id="addProjectNombre"
+                    placeholder="Ingrese el nombre del proyecto." formControlName="nombre" required minlength="1"
+                    maxlength="50"
+                    [ngClass]="{'is-invalid':nombre?.errors && nombre?.touched, 'is-valid':!nombre?.errors && nombre?.touched}">
+                <div *ngIf="nombre?.errors && nombre?.touched">
+                    <p *ngIf="nombre?.hasError('required')" class="text-danger">
+                        El nombre del proyecto es requerido (mínimo 1 caracter y máximo 50 caracteres).
+                    </p>
+                    <p *ngIf="nombre?.errors?.['minlength']" class="text-danger">
+                        El nombre del proyecto debe ser de 1 o más caracteres.
+                    </p>
+                    <p *ngIf="nombre?.errors?.['maxlength']" class="text-danger">
+                        El nombre del proyecto debe tener como máximo 50 caracteres.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="addProjectDescripcion" class="form-label">Descripción</label>
+                <textarea class="form-control form-control-sm" id="addProjectDescripcion"
+                    placeholder="Ingrese la descripción del proyecto." formControlName="descripcion" required
+                    minlength="3" maxlength="1000"
+                    [ngClass]="{'is-invalid':descripcion?.errors && descripcion?.touched, 'is-valid':!descripcion?.errors && descripcion?.touched}"></textarea>
+                <div *ngIf="descripcion?.errors && descripcion?.touched">
+                    <p *ngIf="descripcion?.hasError('required')" class="text-danger">
+                        La descripción es requerida (mínimo 3 caracteres y máximo 1000 caracteres).
+                    </p>
+                    <p *ngIf="descripcion?.errors?.['minlength']" class="text-danger">
+                        La descripción debe ser de 3 o más caracteres.
+                    </p>
+                    <p *ngIf="descripcion?.errors?.['maxlength']" class="text-danger">
+                        La descripción debe tener como máximo 1000 caracteres.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="addProjectFechaInicio" class="form-label">Fecha de inicio</label>
+                <input type="text" class="form-control form-control-sm" id="addProjectFechaInicio"
+                    placeholder="Ingrese la fecha de inicio." formControlName="fecha_inicio" required minlength="2"
+                    maxlength="20"
+                    [ngClass]="{'is-invalid':fecha_inicio?.errors && fecha_inicio?.touched, 'is-valid':!fecha_inicio?.errors && fecha_inicio?.touched}">
+                <div *ngIf="fecha_inicio?.errors && fecha_inicio?.touched">
+                    <p *ngIf="fecha_inicio?.hasError('required')" class="text-danger">
+                        La fecha de inicio es requerida (mínimo 2 caracteres y máximo 20 caracteres).
+                    </p>
+                    <p *ngIf="fecha_inicio?.errors?.['minlength']" class="text-danger">
+                        La fecha de inicio debe ser de 2 o más caracteres.
+                    </p>
+                    <p *ngIf="fecha_inicio?.errors?.['maxlength']" class="text-danger">
+                        La fecha de inicio debe tener como máximo 20 caracteres.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="addProjectFechaFin" class="form-label">Fecha de finalización</label>
+                <input type="text" class="form-control form-control-sm" id="addProjectFechaFin"
+                    placeholder="Ingrese la fecha de finalizacion." formControlName="fecha_fin" required minlength="2"
+                    maxlength="20"
+                    [ngClass]="{'is-invalid':fecha_fin?.errors && fecha_fin?.touched, 'is-valid':!fecha_fin?.errors && fecha_fin?.touched}">
+                <div *ngIf="fecha_fin?.errors && fecha_fin?.touched">
+                    <p *ngIf="fecha_fin?.hasError('required')" class="text-danger">
+                        La fecha de finalización es requerida (mínimo 2 caracteres y máximo 20 caracteres).
+                    </p>
+                    <p *ngIf="fecha_fin?.errors?.['minlength']" class="text-danger">
+                        La fecha de finalización debe ser de 2 o más caracteres.
+                    </p>
+                    <p *ngIf="fecha_fin?.errors?.['maxlength']" class="text-danger">
+                        La fecha de finalización debe tener como máximo 20 caracteres.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="addProjectUrlImagen" class="form-label">Enlace a la imagen</label>
+                <input type="text" class="form-control form-control-sm" id="addProjectUrlImagen"
+                    placeholder="Ingrese el enlace a la imagen del proyecto." formControlName="url_imagen" required
+                    minlength="3" maxlength="1000"
+                    [ngClass]="{'is-invalid':url_imagen?.errors && url_imagen?.touched, 'is-valid':!url_imagen?.errors && url_imagen?.touched}">
+                <div *ngIf="url_imagen?.errors && url_imagen?.touched">
+                    <p *ngIf="url_imagen?.hasError('required')" class="text-danger">
+                        El enlace a la imagen es requerido (mínimo 3 caracteres y máximo 1000 caracteres).
+                    </p>
+                    <p *ngIf="url_imagen?.errors?.['minlength']" class="text-danger">
+                        El enlace a la imagen debe ser de 3 o más caracteres.
+                    </p>
+                    <p *ngIf="url_imagen?.errors?.['maxlength']" class="text-danger">
+                        El enlace a la imagen debe tener como máximo 1000 caracteres.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="addProjectUrlProyecto" class="form-label">Enlace al proyecto</label>
+                <input type="text" class="form-control form-control-sm" id="addProjectUrlProjecto"
+                    placeholder="Ingrese el enlace al proyecto." formControlName="url_proyecto" required minlength="3"
+                    maxlength="1000"
+                    [ngClass]="{'is-invalid':url_proyecto?.errors && url_proyecto?.touched, 'is-valid':!url_proyecto?.errors && url_proyecto?.touched}">
+                <div *ngIf="url_proyecto?.errors && url_proyecto?.touched">
+                    <p *ngIf="url_proyecto?.hasError('required')" class="text-danger">
+                        El enlace al proyecto es requerido (mínimo 3 caracteres y máximo 1000 caracteres).
+                    </p>
+                    <p *ngIf="url_proyecto?.errors?.['minlength']" class="text-danger">
+                        El enlace al proyecto debe ser de 3 o más caracteres.
+                    </p>
+                    <p *ngIf="url_proyecto?.errors?.['maxlength']" class="text-danger">
+                        El enlace al proyecto debe tener como máximo 1000 caracteres.
+                    </p>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="activeModal.close()">Cerrar</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!addProjectForm.valid">Aplicar
+                    cambios</button>
+            </div>
+
+        </form>
+    </div>
+</div>

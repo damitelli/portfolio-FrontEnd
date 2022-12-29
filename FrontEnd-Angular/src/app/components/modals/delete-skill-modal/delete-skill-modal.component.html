@@ -1,0 +1,26 @@
+<div class="modal-content">
+    <div class="modal-header flex-column">
+        <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+        <div class="delete-icon-box py-4">
+            <fa-icon [icon]="faCircleXmark" [ngStyle]="{'color': '#f15e5e'}" size="4x"></fa-icon>
+        </div>
+        <h4 class="modal-title">¿Realmente desea borrar "{{skill.nombre}}"?</h4>
+    </div>
+    <div class="modal-body">
+        <form (ngSubmit)="deleteSkillData(skill); activeModal.close()">
+
+            <div class="mb-3">
+                <p class="text-center text-danger">
+                    "{{skill.nombre}}" será borrado permantemente.
+                </p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="activeModal.close()">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Aplicar
+                    cambios</button>
+            </div>
+
+        </form>
+    </div>
+</div>

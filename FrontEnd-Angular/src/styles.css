@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap');
+
+body {
+    font-family: 'Comfortaa', cursive;
+    color: #404040;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    word-break: break-word
+}
+
+.card {
+    margin: 20px 0 20px;
+    border-radius: 30px;
+}
+
+.card-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 600px) {
+    .btn-edit {
+        line-height: 3;
+    }
+}
+
+.btn-right {
+    cursor: pointer;
+}
+
+.logo-institution {
+    max-height: 80px;
+    max-width: 80px;
+    background-position: center;
+}
+
+textarea {
+    height: 100px;
+}
+
+.divider {
+    min-width: 500px;
+}
+
+.form-label {
+    font-weight: 600;
+}

@@ -1,0 +1,52 @@
+<div class="card" id="projects">
+    <div class="card-body">
+        <div class="card-title">
+
+            <div class="section-title d-flex">
+                <div class="d-block mb-3">
+                    <h2>Proyectos</h2>
+                </div>
+            </div>
+
+            <div class="btn-edit">
+                <a class="btn-right">
+                    <app-btn-add (btnClick)="openAddProjectModal()"></app-btn-add>
+                </a>
+            </div>
+        </div>
+
+        <div class="my-3 ms-md-5" *ngFor="let project of projectsList">
+
+            <div class="container-fluid ms-3">
+
+                <div class="d-flex pt-4">
+                    <a class="text-decoration-none flex-grow-1" [href]="project.url_proyecto" target="_blank">
+                        <h3>{{project.nombre}}</h3>
+                    </a>
+
+                    <div class="btn-edit flex-shrink-0 text-end p-0">
+                        <a class="btn-right p-1">
+                            <app-btn-edit (btnClick)="openEditProjectModal(project)"></app-btn-edit>
+                        </a>
+                        <a class="btn-right p-1">
+                            <app-btn-delete (btnClick)="openDeleteProjectModal(project)"></app-btn-delete>
+                        </a>
+                    </div>
+
+                </div>
+
+                <p class="card-text my-2">{{project.descripcion}}</p>
+
+                <p class="card-tex mt-3 mb-1">{{project.fecha_inicio}} - {{project.fecha_fin}}</p>
+
+                <a class="mb-1" [href]="project.url_proyecto" target="_blank">
+                    <img class="project-img mx-auto d-block mt-3 ms-md-5 rounded" [src]="project.url_imagen"
+                        alt="Imagen del projecto">
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

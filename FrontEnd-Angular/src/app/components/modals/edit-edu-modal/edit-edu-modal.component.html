@@ -1,0 +1,110 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title">Editar educación</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="editEduForm" (ngSubmit)="updateEduData(editEduForm.value); activeModal.close()">
+
+            <div class="mb-3">
+                <label for="editEducationTitulo" class="form-label">Título</label>
+                <input type="text" class="form-control form-control-sm" id="editEducationTitulo"
+                    placeholder="Ingrese el título." formControlName="titulo" required minlength="2" maxlength="50"
+                    [ngClass]="{'is-invalid':titulo?.errors && titulo?.touched, 'is-valid':!titulo?.errors && titulo?.touched}">
+                <div *ngIf="titulo?.errors && titulo?.touched">
+                    <p *ngIf="titulo?.hasError('required')" class="text-danger">
+                        El título es requerido (mínimo 2 caracteres y máximo 50 caracteres).
+                    </p>
+                    <p *ngIf="titulo?.errors?.['minlength']" class="text-danger">
+                        El título debe ser de 2 o más caracteres.
+                    </p>
+                    <p *ngIf="titulo?.errors?.['maxlength']" class="text-danger">
+                        El título debe tener como máximo 50 caracteres.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="editEducationDescripcion" class="form-label">Descripción</label>
+                <textarea class="form-control form-control-sm" id="editEducationDescripcion"
+                    placeholder="Ingrese la descripción." formControlName="descripcion" required minlength="3"
+                    maxlength="1000"
+                    [ngClass]="{'is-invalid':descripcion?.errors && descripcion?.touched, 'is-valid':!descripcion?.errors && descripcion?.touched}"></textarea>
+                <div *ngIf="descripcion?.errors && descripcion?.touched">
+                    <p *ngIf="descripcion?.hasError('required')" class="text-danger">
+                        La descripción es requerida (mínimo 3 caracteres y máximo 1000 caracteres).
+                    </p>
+                    <p *ngIf="descripcion?.errors?.['minlength']" class="text-danger">
+                        La descripción debe ser de 3 o más caracteres.
+                    </p>
+                    <p *ngIf="descripcion?.errors?.['maxlength']" class="text-danger">
+                        La descripción debe tener como máximo 1000 caracteres.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="editEducationFechaInicio" class="form-label">Fecha de inicio</label>
+                <input type="text" class="form-control form-control-sm" id="editEducationFechaInicio"
+                    placeholder="Ingrese la fecha de inicio." formControlName="fecha_inicio" required minlength="2"
+                    maxlength="20"
+                    [ngClass]="{'is-invalid':fecha_inicio?.errors && fecha_inicio?.touched, 'is-valid':!fecha_inicio?.errors && fecha_inicio?.touched}">
+                <div *ngIf="fecha_inicio?.errors && fecha_inicio?.touched">
+                    <p *ngIf="fecha_inicio?.hasError('required')" class="text-danger">
+                        La fecha de inicio es requerida (mínimo 2 caracteres y máximo 20 caracteres).
+                    </p>
+                    <p *ngIf="fecha_inicio?.errors?.['minlength']" class="text-danger">
+                        La fecha de inicio debe ser de 2 o más caracteres.
+                    </p>
+                    <p *ngIf="fecha_inicio?.errors?.['maxlength']" class="text-danger">
+                        La fecha de inicio debe tener como máximo 20 caracteres.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="editEducationFechaFin" class="form-label">Fecha de finalización</label>
+                <input type="text" class="form-control form-control-sm" id="editEducationFechaFin"
+                    placeholder="Ingrese la fecha de finalización." formControlName="fecha_fin" required minlength="2"
+                    maxlength="20"
+                    [ngClass]="{'is-invalid':fecha_fin?.errors && fecha_fin?.touched, 'is-valid':!fecha_fin?.errors && fecha_fin?.touched}">
+                <div *ngIf="fecha_fin?.errors && fecha_fin?.touched">
+                    <p *ngIf="fecha_fin?.hasError('required')" class="text-danger">
+                        La fecha de finalización es requerida (mínimo 2 caracteres y máximo 20 caracteres).
+                    </p>
+                    <p *ngIf="fecha_fin?.errors?.['minlength']" class="text-danger">
+                        La fecha de finalización debe ser de 2 o más caracteres.
+                    </p>
+                    <p *ngIf="fecha_fin?.errors?.['maxlength']" class="text-danger">
+                        La fecha de finalización debe tener como máximo 20 caracteres.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="editEducationUrlLogoEmpresa" class="form-label">Enlace a la imagen</label>
+                <input type="text" class="form-control form-control-sm" id="editEducationUrlLogoEmpresa"
+                    placeholder="Ingrese el enlace a la imagen." formControlName="url_logo_institucion" required
+                    minlength="3" maxlength="1000"
+                    [ngClass]="{'is-invalid':url_logo_institucion?.errors && url_logo_institucion?.touched, 'is-valid':!url_logo_institucion?.errors && url_logo_institucion?.touched}">
+                <div *ngIf="url_logo_institucion?.errors && url_logo_institucion?.touched">
+                    <p *ngIf="url_logo_institucion?.hasError('required')" class="text-danger">
+                        El enlace a la imagen es requerido (mínimo 3 caracteres y máximo 1000 caracteres).
+                    </p>
+                    <p *ngIf="url_logo_institucion?.errors?.['minlength']" class="text-danger">
+                        El enlace a la imagen debe ser de 3 o más caracteres.
+                    </p>
+                    <p *ngIf="url_logo_institucion?.errors?.['maxlength']" class="text-danger">
+                        El enlace a la imagen debe tener como máximo 1000 caracteres.
+                    </p>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="activeModal.close()">Cerrar</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!editEduForm.valid">Aplicar cambios</button>
+            </div>
+
+        </form>
+    </div>
+</div>
