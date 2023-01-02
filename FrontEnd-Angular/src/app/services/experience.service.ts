@@ -12,7 +12,7 @@ const httpOptions = {
 })
 
 export class ExperienceService {
-  private urlData = 'http://localhost:8080/experiencialaboral';
+  private urlData = 'https://portfolio-ap-backend-qnwn.onrender.com/experiencialaboral';
 
   constructor(private http: HttpClient) { }
 

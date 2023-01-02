@@ -12,7 +12,7 @@ const httpOptions = {
 })
 
 export class ProfileService {
-  private urlData = 'http://localhost:8080/personas';
+  private urlData = 'https://portfolio-ap-backend-qnwn.onrender.com/personas';
 
   constructor(private http: HttpClient) { }
 

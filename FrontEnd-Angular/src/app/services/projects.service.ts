@@ -13,7 +13,7 @@ const httpOptions = {
 
 export class ProjectsService {
 
-  private urlData = 'http://localhost:8080/proyectos';
+  private urlData = 'https://portfolio-ap-backend-qnwn.onrender.com/proyectos';
 
   constructor(private http: HttpClient) { }
 

@@ -11,7 +11,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class SkillsService {
-  private urlData = 'http://localhost:8080/habilidades';
+  private urlData = 'https://portfolio-ap-backend-qnwn.onrender.com/habilidades';
 
   constructor(private http: HttpClient) { }
 
