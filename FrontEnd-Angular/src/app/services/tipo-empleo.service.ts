@@ -8,7 +8,7 @@ import { TipoDeEmpleoInterface } from '../model/tipo-de-empleo-interface';
 })
 
 export class TipoEmpleoService {
-  private urlData = 'https://portfolio-ap-backend-qnwn.onrender.com/tipoempleo';
+  private urlData = 'https://portfolio-ap-backend-vu9q.onrender.com/tipoempleo';
 
   constructor(private http: HttpClient) { }
 

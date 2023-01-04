@@ -8,7 +8,7 @@ import { TipoDeHabilidadInterface } from '../model/tipo-de-habilidad-interface';
 })
 
 export class TipoHabilidadService {
-  private urlData = 'https://portfolio-ap-backend-qnwn.onrender.com/tipohabilidad';
+  private urlData = 'https://portfolio-ap-backend-vu9q.onrender.com/tipohabilidad';
 
   constructor(private http: HttpClient) { }
 

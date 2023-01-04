@@ -13,7 +13,7 @@ const httpOptions = {
 
 export class ProjectsService {
 
-  private urlData = 'https://portfolio-ap-backend-qnwn.onrender.com/proyectos';
+  private urlData = 'https://portfolio-ap-backend-vu9q.onrender.com/proyectos';
 
   constructor(private http: HttpClient) { }
 
